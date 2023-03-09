@@ -1,0 +1,18 @@
+.header {
+    text-align: center;
+}
+
+.details {}
+
+.detail--column {
+    flex-basis: 1%;
+    width: 68rem;
+    margin: -42px auto;
+    padding: 2rem;
+}
+
+.schedules {
+    font-size: 1rem;
+    margin-left: 6rem;
+}
+
