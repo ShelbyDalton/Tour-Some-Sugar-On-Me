@@ -39,7 +39,7 @@ export const Schedules = () => {
         const band = findBands(schedule, bands)
         const venue = findVenues(schedule, venues)
 
-        html += `<li>${band.name} will be playing at ${venue.name} on ${schedule.date}</li>`
+        html += `<li id="schedule--${schedule.id}">${band.name} will be playing at ${venue.name} on ${schedule.date}</li>`
     }
 
     html += "</ul>"
@@ -48,26 +48,44 @@ export const Schedules = () => {
 }
 
 
-
 document.addEventListener(
     "click",
     (clickEvent) => {
         const itemClicked = clickEvent.target
         if (itemClicked.id.startsWith("schedule")) {
-            const [,scheduleId] = itemClicked.id.split("--")
-            let showSchedule = null
-            for (const schedule of schedules) {
+            const [, scheduleId] = itemClicked.id.split("--")
+            for (let schedule of schedules) {
                 if (schedule.id === parseInt(scheduleId)) {
-                    showSchedule = schedule
+                    for (let band of bands) {
+                        if (band.id === schedule.bandId) {
+                            window.alert(`${band.name}\n${band.numberOfMembers}\n${band.genre}\n${band.yearFormed}`)
+                        }
+                    }
                 }
             }
-            let scheduledBand = null
-            for (const band of bands) {
-                if (band.id === showSchedule.bandId) {
-                    scheduledBand = band
-                }
-            }
-            window.alert(`${scheduledBand.name}, ${scheduledBand.numberOfMembers}, ${scheduledBand.genre}, ${scheduledBand.yearFormed}`)
         }
     }
 )
+
+
+
+
+// document.addEventListener(
+//     "click",
+//     (clickEvent) => {
+//         const itemClicked = clickEvent.target
+//         if (itemClicked.id.startsWith("schedule")) {
+//             const [,scheduleId] = itemClicked.id.split("--")
+//             for (const schedule of schedules) {
+//                 const selectedBand = findBands(schedule, bands)
+//                 if (schedule.id === parseInt(scheduleId)) {
+//                     window.alert(`${selectedBand.name}\n${selectedBand.numberOfMembers}\n${selectedBand.genre}\n${selectedBand.yearFormed}`)
+//                 }
+//             }
+//         }
+//     }
+// )
+
+
+
+// window.alert(`${selectedBand.name}\n${selectedBand.numberOfMembers}\n${selectedBand.genre}\n${selectedBand.yearFormed}`)

@@ -6,9 +6,9 @@ const mainContainer = document.querySelector("#container")
 
 const applicationHTML = `
 <h1 class="header">Tour Some Sugar On Me</h1>
-<article class="schedules">
-    <h2>Schedules</h2>
-    ${Schedules()}
+<article class="schedule">
+    <h2>Schedule</h2>
+    <div class="schedule-list">${Schedules()}</div>
 </article>
 <article class="details">
     <section class="detail--column list details__bands">

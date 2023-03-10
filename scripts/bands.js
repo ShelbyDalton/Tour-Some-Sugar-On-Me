@@ -23,24 +23,25 @@ document.addEventListener(
     (clickEvent) => {
         const itemClicked = clickEvent.target
         if (itemClicked.id.startsWith("band")) {
-            const [,bandId] = itemClicked.id.split("--")
+            const [, bandId] = itemClicked.id.split("--")
             let scheduledBand = null
             for (const band of bands) {
-                if (band.id === parseInt(bandId))
-                scheduledBand = band
+                if (band.id === parseInt(bandId)) {
+                    scheduledBand = band
+                }
             }
-        }
-        let selectedVenue = []
-        for (const schedule of schedules) {
-            if (booking.bandId === scheduledBand.id) {
-                for (const venue of venues) {
-                    if (venue.id === schedule.venueId) {
-                        selectedVenue.push(venue.name)
+            let selectedVenue = []
+            for (const schedule of schedules) {
+                if (schedule.bandId === scheduledBand.id) {
+                    for (const venue of venues) {
+                        if (venue.id === schedule.venueId) {
+                            selectedVenue.push(venue.name)
+                        }
                     }
                 }
             }
+            let allVenues = selectedVenue.join(" and ")
+            window.alert(`${allVenues}`)
         }
-        let allVenues = selectedVenue.join(" and ")
-        window.alert(`${allVenues}`)
     }
 )

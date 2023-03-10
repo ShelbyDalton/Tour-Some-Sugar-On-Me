@@ -9,9 +9,9 @@ export const Venues = () => {
 
     for (const venue of venues) {
         html += `<li id="venue--${venue.id}">${venue.name}</li>`
-        html += `<div id="venue--${venue.id}">${venue.address}</div>`
-        html += `<div id="venue--${venue.id}">${venue.squareFootage}</div>`
-        html += `<div id="venue--${venue.id}">${venue.maximumOccupancy}</div>`
+        html += `<div id="venue--">${venue.address}</div>`
+        html += `<div id="venue--">${venue.squareFootage}</div>`
+        html += `<div id="venue--">${venue.maximumOccupancy}</div>`
     }
 
     html += "</ul>"
@@ -36,7 +36,7 @@ document.addEventListener(
             for (const schedule of schedules) {
                 if (schedule.venueId === selectedVenue.id) {
                     for (const band of bands) {
-                        if (band.if === booking.bandId) {
+                        if (band.id === schedule.bandId) {
                             scheduledBand.push(band.name)
                         }
                     }
